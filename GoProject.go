@@ -51,8 +51,7 @@ func main() {
 		description: "A good sandwich",
 	}
 
-	//a slice, which is more popular in go than lists
-	//since this seems to be a dynamically allocating array
+	//make a slice of products
 	productList := []*Product{p1, p2}
 
 	fmt.Println("List of products:\n")
@@ -70,9 +69,8 @@ func main() {
 	text, _ := reader.ReadString('\n')
 
 	if text == "y" {
-		fmt.Println("\nHold on there, class just ended.")
-		fmt.Println("I was working with lists and now they're slices")
-		fmt.Println("I'll change this soon so it updates to 1 dollar\n")
+		//https://www.reddit.com/r/golang/comments/283vpk/help_with_slices_and_passbyreference/
+		fmt.Println("\nUpdated the gum to a reasonable price\n")
 	}
 
 	fmt.Println("List of products:\n")
