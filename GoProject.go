@@ -16,14 +16,14 @@ import (
 	"os"
 )
 
-//object created - a prototype of Product
+//Product - Stores Price, Name, Description
 type Product struct {
 	price       float32
 	name        string
 	description string
 }
 
-//prints Product 'structs' that are passed in
+//ProductToString - Prints information on Product
 func ProductToString(p *Product) {
 	fmt.Println("Info on product: ")
 	fmt.Println("Name:  ", p.name)
@@ -34,7 +34,7 @@ func ProductToString(p *Product) {
 }
 
 func main() {
-	fmt.Println("Hello World!\n")
+	fmt.Println("Hello World!")
 
 	//& used to assure new address generated for each product
 	//avoids conflicts of possible over-writing in memory
@@ -54,7 +54,7 @@ func main() {
 	//make a slice of products
 	productList := []*Product{p1, p2}
 
-	fmt.Println("List of products:\n")
+	fmt.Println("\nList of products:")
 
 	//array/slice loop
 	//http://stackoverflow.com/questions/7782411/is-there-a-foreach-loop-in-go
@@ -67,15 +67,25 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("Is the gum too expensive for you? y/n: ")
 	text, _ := reader.ReadString('\n')
+	fmt.Println(text)
 
 	if text == "y" {
 		//https://www.reddit.com/r/golang/comments/283vpk/help_with_slices_and_passbyreference/
-		fmt.Println("\nUpdated the gum to a reasonable price\n")
+		fmt.Println("\nJust run please")
 	}
 
-	fmt.Println("List of products:\n")
+	fmt.Println("List of products:")
 
 	for _, prod := range productList {
 		ProductToString(prod)
 	}
+
+	fmt.Println("Part 2: Shaylyn")
+
+	fmt.Println("Hello World!")
+	JamesBank := payAccount{"test", 1, 1}
+	James := user{1, "password", "email", JamesBank}
+	something()
+
+	fmt.Println(James.id)
 }

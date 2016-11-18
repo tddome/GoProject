@@ -1,5 +1,5 @@
 // CS408_Go_Project project main.go
-package mainTest
+package main
 
 import (
 	"fmt"
