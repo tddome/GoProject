@@ -5,7 +5,7 @@ import (
 )
 
 //Product - Stores Price, Name, Description
-type Product struct {
+type product struct {
 	pName  string
 	pID    int
 	pType  string
@@ -14,7 +14,7 @@ type Product struct {
 
 //GetIndexOfProduct - Check if Product is contained by name
 //Return the index where name is found, else return -1
-func GetIndexOfProduct(p []*Product, id int) int {
+func GetIndexOfProduct(p []product, id int) int {
 	for i, a := range p {
 		if a.pID == id {
 			return i
@@ -23,37 +23,48 @@ func GetIndexOfProduct(p []*Product, id int) int {
 	return -1
 }
 
+//ProductCreate - Create a Product to add to the Product List
+func CreateProduct(name string, id int, atype string, price float32) {
+	pNew := product{
+		pName:  name,
+		pID:    id,
+		pType:  atype,
+		pPrice: price,
+	}
+	AddProductToDatabase(pNew)
+}
+
 //ProductDelete - Delete a Product from the Product list using index
-func ProductDelete(p []*Product, i int) []*Product {
+func ProductDelete(p []product, i int) []product {
 	return append(p[:i], p[i+1:]...)
 }
 
 //ProductUpdateName - Update Name from a Product using index
-func ProductUpdateName(p []*Product, i int, n string) []*Product {
+func ProductUpdateName(p []product, i int, n string) []product {
 	p[i].pName = n
 	return p
 }
 
 //ProductUpdateID - Update ID from a Product using index
-func ProductUpdateID(p []*Product, i int, id int) []*Product {
+func ProductUpdateID(p []product, i int, id int) []product {
 	p[i].pID = id
 	return p
 }
 
 //ProductUpdateType - Update Type from a Product using index
-func ProductUpdateType(p []*Product, i int, t string) []*Product {
+func ProductUpdateType(p []product, i int, t string) []product {
 	p[i].pType = t
 	return p
 }
 
 //ProductUpdatePrice - Update Price from a Product using index
-func ProductUpdatePrice(p []*Product, i int, v float32) []*Product {
+func ProductUpdatePrice(p []product, i int, v float32) []product {
 	p[i].pPrice = v
 	return p
 }
 
 //ProductToString - Prints information on Product
-func ProductToString(p *Product) {
+func ProductToString(p product) {
 	fmt.Println("Name:  ", p.pName)
 	fmt.Println("ID:       ", p.pID)
 	fmt.Println("Type:    ", p.pType)

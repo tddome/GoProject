@@ -9,19 +9,7 @@ type manager struct {
 	mPW string
 }
 
-func createProduct(p []*Product, name string, id int, atype string, price float32) []*Product {
-	pNew := &Product{
-		pName:  name,
-		pID:    id,
-		pType:  atype,
-		pPrice: price,
-	}
-
-	p = append(p, pNew)
-	return p
-}
-
-func checkProductList(p []*Product) {
+func checkProductList(p []product) {
 	fmt.Println("Manager requested for list of products:\n")
 	for _, prod := range p {
 		ProductToString(prod)
@@ -32,7 +20,7 @@ func checkOrderList() {
 	//will work once Order is implemented
 }
 
-func managerAuthenticated(p []*Product) {
+func managerAuthenticated(p []product) {
 	fmt.Println("\nWelcome, manager! What do you want to do?")
 	var mAuth = 0
 
@@ -48,7 +36,7 @@ func managerAuthenticated(p []*Product) {
 		case "1":
 
 			fmt.Println("Creating product...")
-			p = createProduct(p, "BEAR", 102, "Misc.", 1400)
+			CreateProduct("BEAR", 69, "Misc.", 420)
 			fmt.Println("Product created.")
 		case "2":
 			fmt.Println("Please wait...\n")

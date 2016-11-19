@@ -25,14 +25,14 @@ func main() {
 	//& used to assure new address generated for each product
 	//avoids conflicts of possible over-writing in memory
 	//or duplicate copies in memory being generated
-	p1 := &Product{
+	p1 := product{
 		pName:  "Gum",
 		pID:    100,
 		pType:  "Food",
 		pPrice: 8,
 	}
 
-	p2 := &Product{
+	p2 := product{
 		pName:  "Philly Cheese Steak",
 		pID:    101,
 		pType:  "Food",
@@ -40,7 +40,7 @@ func main() {
 	}
 
 	//make a slice of products
-	productList := []*Product{p1, p2}
+	productList := []product{p1, p2}
 
 	fmt.Println("\nList of products:")
 
