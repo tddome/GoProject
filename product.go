@@ -39,7 +39,7 @@ func ProductUpdateName(p []*Product, i int, s string) []*Product {
 	return p
 }
 
-//ProductUpdateDesc - Update a desc from a Product using index
+//ProductUpdateDesc - Update desc from a Product using index
 func ProductUpdateDesc(p []*Product, i int, d string) []*Product {
 	p[i].desc = d
 	return p
