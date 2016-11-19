@@ -89,6 +89,32 @@ func main() {
 		ProductToString(prod)
 	}
 
+	fmt.Print("Are you a manager? y/n: ")
+	fmt.Scan(&text)
+
+	switch text {
+	case "y":
+		fmt.Print("\nWhat is your Manager ID?: ")
+		fmt.Scan(&text)
+		switch text {
+		case "TroyBoy420":
+			fmt.Print("\nWhat is your password, TroyBoy420?: ")
+			fmt.Scan(&text)
+			switch text {
+			case "bears":
+				managerAuthenticated(productList)
+			default:
+				fmt.Println("\nYou're not Troy. Go away.\n")
+			}
+		default:
+			fmt.Println("\nManager ID doesn't exist. Moving on...\n")
+		}
+	case "n":
+		fmt.Println("\nNo worries. Proceeding to Part 2...\n")
+	default:
+		fmt.Println("\nAnswer not yes or no, ignoring...\n")
+	}
+
 	fmt.Println("Part 2: Shaylyn")
 
 	fmt.Println("Hello World!")
