@@ -7,16 +7,16 @@ import (
 //Product - Stores Price, Name, Description
 type Product struct {
 	pName  string
-	pID    float32
+	pID    int
 	pType  string
 	pPrice float32
 }
 
 //GetIndexOfProduct - Check if Product is contained by name
 //Return the index where name is found, else return -1
-func GetIndexOfProduct(p []*Product, n string) int {
+func GetIndexOfProduct(p []*Product, id int) int {
 	for i, a := range p {
-		if a.pName == n {
+		if a.pID == id {
 			return i
 		}
 	}
@@ -41,7 +41,7 @@ func ProductUpdateName(p []*Product, i int, n string) []*Product {
 }
 
 //ProductUpdateDesc - Update desc from a Product using index
-func ProductUpdateID(p []*Product, i int, id float32) []*Product {
+func ProductUpdateID(p []*Product, i int, id int) []*Product {
 	p[i].pID = id
 	return p
 }
@@ -54,11 +54,10 @@ func ProductUpdateType(p []*Product, i int, t string) []*Product {
 
 //ProductToString - Prints information on Product
 func ProductToString(p *Product) {
-	fmt.Println("Info on product: ")
 	fmt.Println("Name:  ", p.pName)
 	fmt.Println("ID:       ", p.pID)
 	fmt.Println("Type:    ", p.pType)
 	fmt.Print("Price:   ")
 	fmt.Printf("%6.2f", p.pPrice)
-	fmt.Print(" USD\n")
+	fmt.Println(" USD\n")
 }

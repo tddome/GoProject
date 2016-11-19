@@ -57,7 +57,7 @@ func main() {
 	switch text {
 	case "y":
 		fmt.Println("\nDeleting Gum...")
-		var index = GetIndexOfProduct(productList, "Gum")
+		var index = GetIndexOfProduct(productList, 100)
 		productList = ProductDelete(productList, index)
 		fmt.Println("\nGum was deleted.\n")
 		time.Sleep(2 * time.Second)
@@ -68,9 +68,9 @@ func main() {
 		switch text {
 		case "y":
 			fmt.Println("\nUpdating Gum price to $3...")
-			var index = GetIndexOfProduct(productList, "Gum")
+			var index = GetIndexOfProduct(productList, 100)
 			productList = ProductUpdatePrice(productList, index, 3)
-			fmt.Println("\nPrice updated.")
+			fmt.Println("\nPrice updated.\n")
 			time.Sleep(2 * time.Second)
 		case "n":
 			fmt.Println("\nAlright, keep it overpriced I guess...\n")
@@ -89,7 +89,7 @@ func main() {
 		ProductToString(prod)
 	}
 
-	fmt.Println("\nPart 2: Shaylyn")
+	fmt.Println("Part 2: Shaylyn")
 
 	fmt.Println("Hello World!")
 	JamesBank := payAccount{"test", 1, 1}
