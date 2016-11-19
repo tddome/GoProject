@@ -7,13 +7,12 @@
 // References:
 // https://www.reddit.com/r/golang/comments/2uko6l/algorithms_and_data_structures_implemented_in_go/
 // https://www.goinggo.net/2013/09/iterating-over-slices-in-go.html
+// http://stackoverflow.com/questions/7782411/is-there-a-foreach-loop-in-go
 
 package main
 
 import (
-	"bufio"
 	"fmt"
-	"os"
 )
 
 //Product - Stores Price, Name, Description
@@ -21,6 +20,28 @@ type Product struct {
 	price       float32
 	name        string
 	description string
+}
+
+//GetIndexOfProduct - Check if Product is contained by name
+//Return the index where name is found, else return -1
+func GetIndexOfProduct(p []*Product, n string) int {
+	for i, a := range p {
+		if a.name == n {
+			return i
+		}
+	}
+	return -1
+}
+
+//ProductDelete - Delete a value from a Product using index
+func ProductDelete(p []*Product, i int) []*Product {
+	return append(p[:i], p[i+1:]...)
+}
+
+//ProductUpdatePrice - Update a value from a Product using index
+func ProductUpdatePrice(p []*Product, i int, v float32) []*Product {
+	p[i].price = v
+	return p
 }
 
 //ProductToString - Prints information on Product
@@ -63,15 +84,34 @@ func main() {
 	}
 
 	//console input/output
-	//http://stackoverflow.com/questions/20895552/how-to-read-input-from-console-line
-	reader := bufio.NewReader(os.Stdin)
-	fmt.Print("Is the gum too expensive for you? y/n: ")
-	text, _ := reader.ReadString('\n')
-	fmt.Println(text)
+	fmt.Print("Do you want to delete the expensive gum? y/n: ")
+	var text string
+	fmt.Scan(&text)
 
-	if text == "y" {
-		//https://www.reddit.com/r/golang/comments/283vpk/help_with_slices_and_passbyreference/
-		fmt.Println("\nJust run please")
+	switch text {
+	case "y":
+		fmt.Println("\nDeleting Gum...")
+		var index = GetIndexOfProduct(productList, "Gum")
+		productList = ProductDelete(productList, index)
+		fmt.Println("\nGum was deleted.\n")
+	case "n":
+		fmt.Println("\nNot Deleting Gum...")
+		fmt.Print("Would you like to update the price of Gum to $3? y/n: ")
+
+		fmt.Scan(&text)
+		switch text {
+		case "y":
+			fmt.Println("\nUpdating Gum price to $3...")
+			var index = GetIndexOfProduct(productList, "Gum")
+			productList = ProductUpdatePrice(productList, index, 3)
+			fmt.Println("\nPrice updated.\n")
+		case "n":
+			fmt.Println("\nAlright, keep it overpriced I guess...\n")
+		default:
+			fmt.Println("\nAnswer not yes or no, ignoring...\n")
+		}
+	default:
+		fmt.Println("\nAnswer not yes or no, ignoring...\n")
 	}
 
 	fmt.Println("List of products:")
@@ -80,7 +120,7 @@ func main() {
 		ProductToString(prod)
 	}
 
-	fmt.Println("Part 2: Shaylyn")
+	fmt.Println("\nPart 2: Shaylyn")
 
 	fmt.Println("Hello World!")
 	JamesBank := payAccount{"test", 1, 1}
