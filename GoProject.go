@@ -9,6 +9,9 @@
 // https://www.goinggo.net/2013/09/iterating-over-slices-in-go.html
 // http://stackoverflow.com/questions/7782411/is-there-a-foreach-loop-in-go
 
+// Project Outline (Might only work for Troy?):
+// https://docs.google.com/document/d/1ocq3TYRU3JASzWDYsycaDi9CGuoG2MVsmT2LDAnvnaE/edit?ts=580ed160
+
 package main
 
 import (
