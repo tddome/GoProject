@@ -23,15 +23,15 @@ func main() {
 	//avoids conflicts of possible over-writing in memory
 	//or duplicate copies in memory being generated
 	p1 := &Product{
-		price:       8,
-		name:        "Gum",
-		description: "A really expensive piece of gum",
+		price: 8,
+		name:  "Gum",
+		desc:  "A really expensive piece of gum",
 	}
 
 	p2 := &Product{
-		price:       8,
-		name:        "Philly Cheese Steak",
-		description: "A good sandwich",
+		price: 8,
+		name:  "Philly Cheese Steak",
+		desc:  "A good sandwich",
 	}
 
 	//make a slice of products
@@ -65,7 +65,9 @@ func main() {
 			fmt.Println("\nUpdating Gum price to $3...")
 			var index = GetIndexOfProduct(productList, "Gum")
 			productList = ProductUpdatePrice(productList, index, 3)
-			fmt.Println("\nPrice updated.\n")
+			fmt.Println("\nPrice updated.")
+			productList = ProductUpdateDesc(productList, index, "A reasonably priced piece of gum.")
+			fmt.Println("\nDescription updated.\n")
 			time.Sleep(2 * time.Second)
 		case "n":
 			fmt.Println("\nAlright, keep it overpriced I guess...\n")

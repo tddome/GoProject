@@ -6,9 +6,9 @@ import (
 
 //Product - Stores Price, Name, Description
 type Product struct {
-	price       float32
-	name        string
-	description string
+	price float32
+	name  string
+	desc  string
 }
 
 //GetIndexOfProduct - Check if Product is contained by name
@@ -22,14 +22,26 @@ func GetIndexOfProduct(p []*Product, n string) int {
 	return -1
 }
 
-//ProductDelete - Delete a value from a Product using index
+//ProductDelete - Delete a Product from the Product list using index
 func ProductDelete(p []*Product, i int) []*Product {
 	return append(p[:i], p[i+1:]...)
 }
 
-//ProductUpdatePrice - Update a value from a Product using index
+//ProductUpdatePrice - Update price from a Product using index
 func ProductUpdatePrice(p []*Product, i int, v float32) []*Product {
 	p[i].price = v
+	return p
+}
+
+//ProductUpdateName - Update name from a Product using index
+func ProductUpdateName(p []*Product, i int, s string) []*Product {
+	p[i].name = s
+	return p
+}
+
+//ProductUpdateDesc - Update a desc from a Product using index
+func ProductUpdateDesc(p []*Product, i int, d string) []*Product {
+	p[i].desc = d
 	return p
 }
 
@@ -40,5 +52,5 @@ func ProductToString(p *Product) {
 	fmt.Print("Price:   ")
 	fmt.Printf(" $%6.2f", p.price)
 	fmt.Print(" Dollar\n")
-	fmt.Println("Info:    ", p.description)
+	fmt.Println("Info:    ", p.desc)
 }
