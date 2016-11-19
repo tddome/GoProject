@@ -1,10 +1,6 @@
 // CS408_Go_Project project main.go
 package main
 
-import (
-	"fmt"
-)
-
 type payAccount struct {
 	bankName      string
 	accountNumber float64
@@ -12,45 +8,74 @@ type payAccount struct {
 }
 
 type user struct {
-	id          float64
-	email       string
-	password    string
-	bankAccount payAccount
+	uID          float64
+	uEmail       string
+	uPassword    string
+	uBankAccount payAccount
 }
 
-func placeOrder() {
+//func GetIndexOfUser(u []user, id int) int {
+//	for i, a := range u {
+//		if a.uID == id {
+//			return i
+//		}
+//	}
+//	return -1
+//}
+
+//func CreateProduct(name string, id int, atype string, price float32) {
+//	pNew := product{
+//		pName:  name,
+//		pID:    id,
+//		pType:  atype,
+//		pPrice: price,
+//	}
+//	AddProductToDatabase(pNew)
+//}
+
+//ProductDelete - Delete a Product from the Product list using index
+//func ProductDelete(p []product, i int) []product {
+//	return append(p[:i], p[i+1:]...)
+//}
+
+//ProductUpdateName - Update Name from a Product using index
+//func ProductUpdateName(p []product, i int, n string) []product {
+//	p[i].pName = n
+//	return p
+//}
+
+//ProductUpdateID - Update ID from a Product using index
+//func ProductUpdateID(p []product, i int, id int) []product {
+//	p[i].pID = id
+//	return p
+//}
+
+//ProductUpdateType - Update Type from a Product using index
+//func ProductUpdateType(p []product, i int, t string) []product {
+//	p[i].pType = t
+//	return p
+//}
+
+//ProductUpdatePrice - Update Price from a Product using index
+/*func ProductUpdatePrice(p []product, i int, v float32) []product {
+	p[i].pPrice = v
+	return p
+}
+
+//ProductToString - Prints information on Product
+func ProductToString(p product) {
+	fmt.Println("Name:  ", p.pName)
+	fmt.Println("ID:       ", p.pID)
+	fmt.Println("Type:    ", p.pType)
+	fmt.Print("Price:   ")
+	fmt.Printf("%6.2f", p.pPrice)
+	fmt.Println(" USD\n")
+}
+
+func PlaceOrder() {
 	// references the Order thing
 }
 
-func accessPastOrders() {
+func AccessPastOrders() {
 	// lists all past order info made by this user
-}
-
-func something() {
-	Dave := user{id: 1145}
-	Dave.email = "davesux@bademail.net"
-	Dave.password = "iamatool69420"
-	fmt.Println("We are testing Dave's shit! ")
-	fmt.Printf("His id number is: ")
-	fmt.Println(Dave.id)
-
-	fmt.Printf("His email is: ")
-	fmt.Println(Dave.email)
-
-	fmt.Printf("His password is: ")
-	fmt.Println(Dave.password)
-
-	Dave.bankAccount.accountNumber = 111111111
-	Dave.bankAccount.bankName = "Gimmie Your Money Co."
-	Dave.bankAccount.routingNumber = 222222222
-
-	fmt.Println("Dave's bank shit is...")
-	fmt.Printf("Bank name: ")
-	fmt.Printf(Dave.bankAccount.bankName)
-
-	fmt.Printf("Account number: ")
-	fmt.Println(Dave.bankAccount.accountNumber)
-
-	fmt.Printf("Routing number: ")
-	fmt.Println(Dave.bankAccount.routingNumber)
-}
+}*/

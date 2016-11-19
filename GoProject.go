@@ -100,10 +100,10 @@ func main() {
 
 	fmt.Println("Part 2: Shaylyn")
 
-	fmt.Println("Hello World!")
-	JamesBank := payAccount{"test", 1, 1}
-	James := user{1, "password", "email", JamesBank}
-	something()
+	//fmt.Println("Hello World!")
+	//JamesBank := payAccount{"test", 1, 1}
+	//James := user{1, "password", "email", JamesBank}
+	//something()
 
-	fmt.Println(James.id)
+	//fmt.Println(James.id)
 }
