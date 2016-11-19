@@ -13,6 +13,7 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 //Product - Stores Price, Name, Description
@@ -94,10 +95,10 @@ func main() {
 		var index = GetIndexOfProduct(productList, "Gum")
 		productList = ProductDelete(productList, index)
 		fmt.Println("\nGum was deleted.\n")
+		time.Sleep(2 * time.Second)
 	case "n":
 		fmt.Println("\nNot Deleting Gum...")
 		fmt.Print("Would you like to update the price of Gum to $3? y/n: ")
-
 		fmt.Scan(&text)
 		switch text {
 		case "y":
@@ -105,10 +106,13 @@ func main() {
 			var index = GetIndexOfProduct(productList, "Gum")
 			productList = ProductUpdatePrice(productList, index, 3)
 			fmt.Println("\nPrice updated.\n")
+			time.Sleep(2 * time.Second)
 		case "n":
 			fmt.Println("\nAlright, keep it overpriced I guess...\n")
+			time.Sleep(2 * time.Second)
 		default:
 			fmt.Println("\nAnswer not yes or no, ignoring...\n")
+			time.Sleep(2 * time.Second)
 		}
 	default:
 		fmt.Println("\nAnswer not yes or no, ignoring...\n")
