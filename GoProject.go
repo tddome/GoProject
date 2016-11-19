@@ -100,10 +100,9 @@ func main() {
 
 	fmt.Println("Part 2: Shaylyn")
 
-	//fmt.Println("Hello World!")
-	//JamesBank := payAccount{"test", 1, 1}
-	//James := user{1, "password", "email", JamesBank}
-	//something()
+	CreateUser(123, "fuckinEmail@fuckinThings.fuckin", "thisIsMyPassword",
+		"We Are A Bank", 123456, 78900)
 
-	//fmt.Println(James.id)
+	UserToString(123)
+
 }

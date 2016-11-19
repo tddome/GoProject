@@ -1,6 +1,10 @@
 // CS408_Go_Project project main.go
 package main
 
+import (
+	"fmt"
+)
+
 type payAccount struct {
 	bankName      string
 	accountNumber float64
@@ -8,68 +12,60 @@ type payAccount struct {
 }
 
 type user struct {
-	uID          float64
+	uID          int
 	uEmail       string
 	uPassword    string
 	uBankAccount payAccount
 }
 
-//func GetIndexOfUser(u []user, id int) int {
-//	for i, a := range u {
-//		if a.uID == id {
-//			return i
-//		}
-//	}
-//	return -1
-//}
-
-//func CreateProduct(name string, id int, atype string, price float32) {
-//	pNew := product{
-//		pName:  name,
-//		pID:    id,
-//		pType:  atype,
-//		pPrice: price,
-//	}
-//	AddProductToDatabase(pNew)
-//}
-
-//ProductDelete - Delete a Product from the Product list using index
-//func ProductDelete(p []product, i int) []product {
-//	return append(p[:i], p[i+1:]...)
-//}
-
-//ProductUpdateName - Update Name from a Product using index
-//func ProductUpdateName(p []product, i int, n string) []product {
-//	p[i].pName = n
-//	return p
-//}
-
-//ProductUpdateID - Update ID from a Product using index
-//func ProductUpdateID(p []product, i int, id int) []product {
-//	p[i].pID = id
-//	return p
-//}
-
-//ProductUpdateType - Update Type from a Product using index
-//func ProductUpdateType(p []product, i int, t string) []product {
-//	p[i].pType = t
-//	return p
-//}
-
-//ProductUpdatePrice - Update Price from a Product using index
-/*func ProductUpdatePrice(p []product, i int, v float32) []product {
-	p[i].pPrice = v
-	return p
+func GetIndexOfUser(id int) int {
+	for i, a := range userList {
+		if a.uID == id {
+			return i
+		}
+	}
+	return -1
 }
 
-//ProductToString - Prints information on Product
-func ProductToString(p product) {
-	fmt.Println("Name:  ", p.pName)
-	fmt.Println("ID:       ", p.pID)
-	fmt.Println("Type:    ", p.pType)
-	fmt.Print("Price:   ")
-	fmt.Printf("%6.2f", p.pPrice)
-	fmt.Println(" USD\n")
+func CreateUser(id int, email string, pass string, bName string,
+	bAccNum float64, bRoutNum float64) {
+
+	pANew := payAccount{
+		bankName:      bName,
+		accountNumber: bAccNum,
+		routingNumber: bRoutNum,
+	}
+	uNew := user{
+		uID:          id,
+		uEmail:       email,
+		uPassword:    pass,
+		uBankAccount: pANew,
+	}
+	AddUserToDatabase(uNew)
+}
+
+func UserUpdateEmail(id int, n string) {
+	var i int
+	i = GetIndexOfUser(id)
+	userList[i].uEmail = n
+}
+
+func UserUpdatePassword(id int, n string) {
+	var i int
+	i = GetIndexOfUser(id)
+	userList[i].uPassword = n
+}
+
+func UserToString(id int) {
+	var i int
+	i = GetIndexOfUser(id)
+
+	fmt.Println("User Id:              ", userList[i].uID)
+	fmt.Println("User Email:         ", userList[i].uEmail)
+	fmt.Println("User Password:    ", userList[i].uPassword)
+	fmt.Println("User Bank Name: ", userList[i].uBankAccount.bankName)
+	fmt.Println("User Account #:  ", userList[i].uBankAccount.accountNumber)
+	fmt.Println("User Routing #:  ", userList[i].uBankAccount.routingNumber)
 }
 
 func PlaceOrder() {
@@ -78,4 +74,4 @@ func PlaceOrder() {
 
 func AccessPastOrders() {
 	// lists all past order info made by this user
-}*/
+}
