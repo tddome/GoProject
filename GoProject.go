@@ -22,25 +22,8 @@ import (
 func main() {
 	fmt.Println("Hello World!")
 
-	//& used to assure new address generated for each product
-	//avoids conflicts of possible over-writing in memory
-	//or duplicate copies in memory being generated
-	p1 := product{
-		pName:  "Gum",
-		pID:    100,
-		pType:  "Food",
-		pPrice: 8,
-	}
-
-	p2 := product{
-		pName:  "Philly Cheese Steak",
-		pID:    101,
-		pType:  "Food",
-		pPrice: 8,
-	}
-
-	//make a slice of products
-	productList := []product{p1, p2}
+	CreateProduct("Gum", 100, "Food", 8)
+	CreateProduct("Philly Cheese Steak", 101, "Food", 8)
 
 	fmt.Println("\nList of products:")
 
