@@ -40,7 +40,6 @@ func main() {
 	fmt.Println("\nList of products:")
 
 	//array/slice loop
-	//http://stackoverflow.com/questions/7782411/is-there-a-foreach-loop-in-go
 	for _, prod := range productList {
 		ProductToString(prod)
 	}
