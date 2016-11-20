@@ -33,7 +33,7 @@ What should come from other classes:
 
 type order struct {
 	oBillID    int
-	oBillTotal int
+	oBillTotal float32
 	oUserID    int
 }
 
@@ -62,10 +62,22 @@ func OrderQuantityUpdate(prodID int, newQ int) {
 	orderList[prodID] = newQ
 }
 
+func CalculateOrder() float32 {
+	var totalOfOrder = 0.0
+	//Calculate total amount that's in the map
+	for opID, oQuantity := range orderList {
+		fmt.Println("Product ID: ", opID, "Quantity: ", oQuantity)
+		totalOfOrder = float64(totalOfOrder) + float64(GetProductPrice(opID)*float32(oQuantity))
+	}
+	//Return a total amount
+	return float32(totalOfOrder)
+}
+
 func FinalizeOrder(uID int) {
 	var count int = 0
 	var randID int = 0
-	var bTotal int = 0
+	var bTotal float32 = CalculateOrder()
+	var discountCode string
 
 	randID = rand.Intn(1000)
 	for count < len(orderHistory) {
@@ -77,7 +89,8 @@ func FinalizeOrder(uID int) {
 		}
 	}
 
-	// fucntion call here for generating bill total and setting bTotal value
+	// function call here for generating bill total and setting bTotal value
+	bTotal = bTotal - DiscountAmount(bTotal, discountCode)
 
 	oNew := order{
 		oBillID:    randID,
@@ -86,4 +99,13 @@ func FinalizeOrder(uID int) {
 	}
 
 	AddOrderToDatabase(oNew)
+}
+
+func OrderRecord() {
+	for i, ord := range orderHistory {
+		fmt.Println("Order #%v:", i)
+		fmt.Println("Bill ID: %v", ord.oBillID)
+		fmt.Println("Bill Total: %v", ord.oBillTotal)
+		fmt.Println("Created by User ID %v", ord.oUserID)
+	}
 }
