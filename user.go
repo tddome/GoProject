@@ -29,6 +29,16 @@ func GetIndexOfUser(id int) int {
 
 func CreateUser(id int, email string, pass string, bName string,
 	bAccNum float64, bRoutNum float64) {
+	var count int = 0
+
+	for count < len(userList) {
+		if userList[count].uID == id {
+			fmt.Println("That user id is taken.  Please choose a new ID.")
+			return
+		} else {
+			count++
+		}
+	}
 
 	pANew := payAccount{
 		bankName:      bName,
@@ -74,10 +84,11 @@ func UserToString(id int) {
 	fmt.Println("User Routing #:  ", userList[i].uBankAccount.routingNumber)
 }
 
-func PlaceOrder() {
-	// references the Order thing
-}
+func AccessPastOrders(id int) {
+	for _, ord := range orderHistory {
+		if ord.oUserID == id {
+			OrderToString(ord.oBillID)
+		}
+	}
 
-func AccessPastOrders() {
-	// lists all past order info made by this user
 }

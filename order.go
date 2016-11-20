@@ -39,6 +39,15 @@ type order struct {
 
 var orderList map[int]int
 
+func GetIndexOfOrder(id int) int {
+	for i, a := range orderHistory {
+		if a.oBillID == id {
+			return i
+		}
+	}
+	return -1
+}
+
 //NewOrder - Makes new order, clears existing order
 func NewOrder() {
 	orderList = make(map[int]int)
@@ -101,11 +110,14 @@ func FinalizeOrder(uID int) {
 	AddOrderToDatabase(oNew)
 }
 
-func OrderRecord() {
-	for i, ord := range orderHistory {
-		fmt.Println("Order #%v:", i)
-		fmt.Println("Bill ID: %v", ord.oBillID)
-		fmt.Println("Bill Total: %v", ord.oBillTotal)
-		fmt.Println("Created by User ID %v", ord.oUserID)
-	}
+func OrderToString(id int) {
+	var count = 0
+	var i int
+	i = GetIndexOfOrder(id)
+
+	fmt.Println("Order #%v:", count)
+	fmt.Println("Bill ID: %v", orderHistory[i].oBillID)
+	fmt.Println("Bill Total: %v", orderHistory[i].oBillTotal)
+	fmt.Println("Created by User ID %v", orderHistory[i].oUserID)
+	i++
 }
