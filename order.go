@@ -18,11 +18,9 @@ Prints Bill information which contains:
 	Total Cost
 
 What comes from this class:
-	List of products user wants in the order (can add/remove)
-	Number of products user wants for the item
-		(INDEXES MUST MATCH IN BOTH OF THESE ARRAYS!)
-		(e.g. oProductList[0] = "Steak", oQuantity[0] = 3)
-		(Buying 3 steaks)
+	Map, with key being Product and value being Quantity
+		List of product IDs user wants in the order (can add/remove)
+		Number of products user wants for the item
 	Bill ID to identify this bill (Basically order number)
 	Bill Total to state total price (Can be modified by discount)
 
@@ -33,14 +31,27 @@ What should come from other classes:
 */
 
 type order struct {
-	oProductList []product
-	oQuantity    []int
-	oBillID      int
-	oBillTotal   int
+	oBillID    int
+	oBillTotal int
 }
 
-//Discount calculations below
+var orderList map[int]int
 
-func PlaceHolderWoopWoopOrder() {
-	fmt.Println("nice")
+//NewOrder - Makes new order, clears existing order
+func NewOrder() {
+	orderList = make(map[int]int)
+}
+
+func PrintOrder() {
+	for opID, oQuantity := range orderList {
+		fmt.Println("Product ID: ", opID, "Quantity: ", oQuantity)
+	}
+}
+
+func OrderAddProduct(prodID int, prodQ int) {
+	orderList[prodID] = prodQ
+}
+
+func OrderRemoveProduct(prodID int, prodQ int) {
+	delete(orderList, prodID)
 }
