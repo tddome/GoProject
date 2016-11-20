@@ -9,10 +9,10 @@ type manager struct {
 	mPW string
 }
 
-func checkProductList(p []product) {
+func checkProductList() {
 	fmt.Println("Manager requested for list of products:\n")
-	for _, prod := range p {
-		ProductToString(prod)
+	for _, prod := range productList {
+		ProductToString(prod.pID)
 	}
 }
 
@@ -40,7 +40,7 @@ func managerAuthenticated(p []product) {
 			fmt.Println("Product created.")
 		case "2":
 			fmt.Println("Please wait...\n")
-			checkProductList(p)
+			checkProductList()
 		case "3":
 			fmt.Println("Order not implemented yet!")
 		case "4":

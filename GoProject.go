@@ -105,4 +105,10 @@ func main() {
 
 	UserToString(123)
 
+	fmt.Println(GetUserLength())
+
+	DeleteUser(123)
+
+	fmt.Println(GetUserLength())
+
 }

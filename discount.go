@@ -1,8 +1,6 @@
 package main
 
-import (
-	"fmt"
-)
+//"fmt"
 
 //Discount - Stores DiscountCode, DiscountPercent
 type discount struct {
@@ -10,8 +8,30 @@ type discount struct {
 	dPercent int
 }
 
-//Discount calculations below
+func GetIndexOfDiscount(code string) int {
+	for i, a := range discountList {
+		if a.dCode == code {
+			return i
+		}
+	}
+	return -1
+}
 
-func PlaceHolderWoopWoopDiscount() {
-	fmt.Println("nice")
+func CreateDiscount(code string, p int) {
+	dNew := discount{
+		dCode:    code,
+		dPercent: p,
+	}
+	AddDiscountToDatabase(dNew)
+}
+
+func DeleteDiscount(id string) {
+	var i int
+	i = GetIndexOfDiscount(id)
+	DeleteDiscountFromDatabase(i)
+}
+
+//Discount calculations below
+func DiscountStuff() {
+
 }

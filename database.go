@@ -4,17 +4,17 @@ package main
 
 var userList []user
 var productList []product
+var discountList []discount
 
 func AddUserToDatabase(u user) {
 	userList = append(userList, u)
 }
 
-//ProductDelete - Delete a Product from the Product list using index
-//func ProductDelete(p []product, i int) []product {
-//	return append(p[:i], p[i+1:]...)
-//}
+func DeleteUserFromDatabase(i int) {
+	userList = append(userList[:i], userList[i+1:]...)
+}
 
-func ReturnUserListLength() int {
+func GetUserLength() int {
 	return len(userList)
 }
 
@@ -23,10 +23,22 @@ func AddProductToDatabase(p product) {
 }
 
 //ProductDelete - Delete a Product from the Product list using index
-//func ProductDelete(p []product, i int) []product {
-//	return append(p[:i], p[i+1:]...)
-//}
+func DeleteProductFromDatabase(i int) {
+	productList = append(productList[:i], productList[i+1:]...)
+}
 
-func ReturnProductListLength() int {
+func GetProductLength() int {
 	return len(productList)
+}
+
+func AddDiscountToDatabase(d discount) {
+	discountList = append(discountList, d)
+}
+
+func DeleteDiscountFromDatabase(i int) {
+	discountList = append(discountList[:i], discountList[i+1:]...)
+}
+
+func GetDiscountLength() int {
+	return len(discountList)
 }

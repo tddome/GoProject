@@ -44,6 +44,12 @@ func CreateUser(id int, email string, pass string, bName string,
 	AddUserToDatabase(uNew)
 }
 
+func DeleteUser(id int) {
+	var i int
+	i = GetIndexOfUser(id)
+	DeleteUserFromDatabase(i)
+}
+
 func UserUpdateEmail(id int, n string) {
 	var i int
 	i = GetIndexOfUser(id)

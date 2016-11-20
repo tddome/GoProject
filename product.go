@@ -14,8 +14,8 @@ type product struct {
 
 //GetIndexOfProduct - Check if Product is contained by name
 //Return the index where name is found, else return -1
-func GetIndexOfProduct(p []product, id int) int {
-	for i, a := range p {
+func GetIndexOfProduct(id int) int {
+	for i, a := range productList {
 		if a.pID == id {
 			return i
 		}
@@ -34,41 +34,49 @@ func CreateProduct(name string, id int, atype string, price float32) {
 	AddProductToDatabase(pNew)
 }
 
-//ProductDelete - Delete a Product from the Product list using index
-func ProductDelete(p []product, i int) []product {
-	return append(p[:i], p[i+1:]...)
+func DeleteProduct(id int) {
+	var i int
+	i = GetIndexOfProduct(id)
+	DeleteProductFromDatabase(i)
 }
 
 //ProductUpdateName - Update Name from a Product using index
-func ProductUpdateName(p []product, i int, n string) []product {
-	p[i].pName = n
-	return p
+func ProductUpdateName(id int, n string) {
+	var i int
+	i = GetIndexOfProduct(id)
+	productList[i].pName = n
 }
 
 //ProductUpdateID - Update ID from a Product using index
-func ProductUpdateID(p []product, i int, id int) []product {
-	p[i].pID = id
-	return p
+func ProductUpdateID(id int, n int) {
+	var i int
+	i = GetIndexOfProduct(id)
+	productList[i].pID = n
 }
 
 //ProductUpdateType - Update Type from a Product using index
-func ProductUpdateType(p []product, i int, t string) []product {
-	p[i].pType = t
-	return p
+func ProductUpdateType(id int, n string) {
+	var i int
+	i = GetIndexOfProduct(id)
+	productList[i].pType = n
 }
 
 //ProductUpdatePrice - Update Price from a Product using index
-func ProductUpdatePrice(p []product, i int, v float32) []product {
-	p[i].pPrice = v
-	return p
+func ProductUpdatePrice(id int, n float32) {
+	var i int
+	i = GetIndexOfProduct(id)
+	productList[i].pPrice = n
 }
 
 //ProductToString - Prints information on Product
-func ProductToString(p product) {
-	fmt.Println("Name:  ", p.pName)
-	fmt.Println("ID:       ", p.pID)
-	fmt.Println("Type:    ", p.pType)
+func ProductToString(id int) {
+	var i int
+	i = GetIndexOfProduct(id)
+
+	fmt.Println("Name:  ", productList[i].pName)
+	fmt.Println("ID:       ", productList[i].pID)
+	fmt.Println("Type:    ", productList[i].pType)
 	fmt.Print("Price:   ")
-	fmt.Printf("%6.2f", p.pPrice)
+	fmt.Printf("%6.2f", productList[i].pPrice)
 	fmt.Println(" USD\n")
 }
