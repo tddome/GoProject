@@ -29,7 +29,7 @@ func main() {
 
 	//array/slice loop
 	for _, prod := range productList {
-		ProductToString(prod)
+		ProductToString(prod.pID)
 	}
 
 	//console input/output
@@ -40,8 +40,7 @@ func main() {
 	switch text {
 	case "y":
 		fmt.Println("\nDeleting Gum...")
-		var index = GetIndexOfProduct(productList, 100)
-		productList = ProductDelete(productList, index)
+		DeleteProduct(100)
 		fmt.Println("\nGum was deleted.\n")
 		time.Sleep(2 * time.Second)
 	case "n":
@@ -51,8 +50,7 @@ func main() {
 		switch text {
 		case "y":
 			fmt.Println("\nUpdating Gum price to $3...")
-			var index = GetIndexOfProduct(productList, 100)
-			productList = ProductUpdatePrice(productList, index, 3)
+			ProductUpdatePrice(100, 3)
 			fmt.Println("\nPrice updated.\n")
 			time.Sleep(2 * time.Second)
 		case "n":
@@ -69,7 +67,7 @@ func main() {
 	fmt.Println("List of products:")
 
 	for _, prod := range productList {
-		ProductToString(prod)
+		ProductToString(prod.pID)
 	}
 
 	fmt.Print("Are you a manager? y/n: ")
