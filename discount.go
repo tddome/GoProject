@@ -62,3 +62,11 @@ func DiscountAmount(discountTotal float32, discountCode string) float32 {
 		return originalPrice - discountTotal
 	}
 }
+
+func DiscountToString(id string) {
+	var i int
+	i = GetIndexOfDiscount(id)
+
+	fmt.Println("Discount Code: %v", discountList[i].dCode)
+	fmt.Println("Discount Ammount: %v", discountList[i].dPercent)
+}

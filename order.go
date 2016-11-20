@@ -82,11 +82,10 @@ func CalculateOrder() float32 {
 	return float32(totalOfOrder)
 }
 
-func FinalizeOrder(uID int) {
+func FinalizeOrder(uID int, discountCode string) {
 	var count int = 0
 	var randID int = 0
 	var bTotal float32 = CalculateOrder()
-	var discountCode string
 
 	randID = rand.Intn(1000)
 	for count < len(orderHistory) {
@@ -119,5 +118,4 @@ func OrderToString(id int) {
 	fmt.Println("Bill ID: %v", orderHistory[i].oBillID)
 	fmt.Println("Bill Total: %v", orderHistory[i].oBillTotal)
 	fmt.Println("Created by User ID %v", orderHistory[i].oUserID)
-	i++
 }

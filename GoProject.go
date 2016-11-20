@@ -14,99 +14,43 @@
 
 package main
 
-import (
+/*import (
 	"fmt"
 	"time"
-)
+)*/
 
 func main() {
-	fmt.Println("Hello World!")
+	// create manager; show manager options
+	// add product (display product info for adding)
+	// add more products (do not display info)
 
-	CreateProduct("Gum", 100, "Food", 8)
-	CreateProduct("Philly Cheese Steak", 101, "Food", 8)
+	// check product list
+	// remove product
+	// check product list again
 
-	fmt.Println("\nList of products:")
+	// add discount (display)
+	// add other discounts
+	// check discount list
+	// remove discount
+	// check discount list again
 
-	//array/slice loop
-	for _, prod := range productList {
-		ProductToString(prod.pID)
-	}
+	// no checking order history for manager cause there won't be any,
+	// but we'll show this off when the user checks the history
 
-	//console input/output
-	fmt.Print("Do you want to delete the expensive gum? y/n: ")
-	var text string
-	fmt.Scan(&text)
+	// exit manager
 
-	switch text {
-	case "y":
-		fmt.Println("\nDeleting Gum...")
-		DeleteProduct(100)
-		fmt.Println("\nGum was deleted.\n")
-		time.Sleep(2 * time.Second)
-	case "n":
-		fmt.Println("\nNot Deleting Gum...")
-		fmt.Print("Would you like to update the price of Gum to $3? y/n: ")
-		fmt.Scan(&text)
-		switch text {
-		case "y":
-			fmt.Println("\nUpdating Gum price to $3...")
-			ProductUpdatePrice(100, 3)
-			fmt.Println("\nPrice updated.\n")
-			time.Sleep(2 * time.Second)
-		case "n":
-			fmt.Println("\nAlright, keep it overpriced I guess...\n")
-			time.Sleep(2 * time.Second)
-		default:
-			fmt.Println("\nAnswer not yes or no, ignoring...\n")
-			time.Sleep(2 * time.Second)
-		}
-	default:
-		fmt.Println("\nAnswer not yes or no, ignoring...\n")
-	}
+	// create a bunch of users
+	// login to user; show user options
 
-	fmt.Println("List of products:")
+	// output user information
 
-	for _, prod := range productList {
-		ProductToString(prod.pID)
-	}
+	// change email
+	// change password
 
-	fmt.Print("Are you a manager? y/n: ")
-	fmt.Scan(&text)
+	// create order
+	// show previous orders
 
-	switch text {
-	case "y":
-		fmt.Print("\nWhat is your Manager ID?: ")
-		fmt.Scan(&text)
-		switch text {
-		case "TroyBoy420":
-			fmt.Print("\nWhat is your password, TroyBoy420?: ")
-			fmt.Scan(&text)
-			switch text {
-			case "bears":
-				managerAuthenticated(productList)
-			default:
-				fmt.Println("\nYou're not Troy. Go away.\n")
-			}
-		default:
-			fmt.Println("\nManager ID doesn't exist. Moving on...\n")
-		}
-	case "n":
-		fmt.Println("\nNo worries. Proceeding to Part 2...\n")
-	default:
-		fmt.Println("\nAnswer not yes or no, ignoring...\n")
-	}
-
-	fmt.Println("Part 2: Shaylyn")
-
-	CreateUser(123, "fuckinEmail@fuckinThings.fuckin", "thisIsMyPassword",
-		"We Are A Bank", 123456, 78900)
-
-	UserToString(123)
-
-	fmt.Println(GetUserLength())
-
-	DeleteUser(123)
-
-	fmt.Println(GetUserLength())
+	// delete account
+	// try and sign in as that user again; fail
 
 }
