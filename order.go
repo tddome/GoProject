@@ -20,14 +20,21 @@ Prints Bill information which contains:
 	Applied discount(s)
 	Total Cost
 
+What should come from other classes:
+	Customer ID
+	Bank Account
+	Applied Discounts (Discount class modifies total)
+
 */
 type order struct {
-	dCode    string
-	dPercent int
+	oProductList []product
+	oQuantity    []int
+	oBillID      int
+	oBillTotal   int
 }
 
 //Discount calculations below
 
-func PlaceHolderWoopWoopDiscount() {
+func PlaceHolderWoopWoopOrder() {
 	fmt.Println("nice")
 }
