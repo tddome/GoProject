@@ -5,6 +5,7 @@ package main
 var userList []user
 var productList []product
 var discountList []discount
+var orderHistory []order
 
 func AddUserToDatabase(u user) {
 	userList = append(userList, u)
@@ -41,4 +42,12 @@ func DeleteDiscountFromDatabase(i int) {
 
 func GetDiscountLength() int {
 	return len(discountList)
+}
+
+func AddOrderToDatabase(o order) {
+	orderHistory = append(orderHistory, o)
+}
+
+func GetOrderHistoryLength() int {
+	return len(orderHistory)
 }
