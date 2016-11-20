@@ -55,3 +55,7 @@ func OrderAddProduct(prodID int, prodQ int) {
 func OrderRemoveProduct(prodID int, prodQ int) {
 	delete(orderList, prodID)
 }
+
+func OrderQuantityUpdate(prodID int, newQ int) {
+	orderList[prodID] = newQ
+}
