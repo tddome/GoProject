@@ -25,6 +25,17 @@ func GetIndexOfProduct(id int) int {
 
 //ProductCreate - Create a Product to add to the Product List
 func CreateProduct(name string, id int, atype string, price float32) {
+	var count int = 0
+
+	for count < len(productList) {
+		if productList[count].pID == id {
+			fmt.Println("That product id is taken.  Please choose a new ID.")
+			return
+		} else {
+			count++
+		}
+	}
+
 	pNew := product{
 		pName:  name,
 		pID:    id,
@@ -66,6 +77,12 @@ func ProductUpdatePrice(id int, n float32) {
 	var i int
 	i = GetIndexOfProduct(id)
 	productList[i].pPrice = n
+}
+
+func GetProductPrice(id int) float32 {
+	var i int
+	i = GetIndexOfProduct(id)
+	return productList[i].pPrice
 }
 
 //ProductToString - Prints information on Product
