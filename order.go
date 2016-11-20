@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 )
 
 /*
@@ -33,13 +34,35 @@ What should come from other classes:
 type order struct {
 	oBillID    int
 	oBillTotal int
+	oUserID    int
 }
 
 var orderList map[int]int
 
 //NewOrder - Makes new order, clears existing order
-func NewOrder() {
+func NewOrder(uID int) {
+	r := rand.New(rand.NewSource(1000))
+	var uniqueID int = 0
+	var count int = 0
+
 	orderList = make(map[int]int)
+
+	for uniqueID != 1 {
+		randID = r.Int()
+		for i, a := range orderHistory {
+			if a.oBillID == randID {
+				count++
+			} else if count == len(orderHistory) {
+				uniqueID = 1
+			}
+		}
+	}
+
+	oNew := order{
+		oBillID:    randID,
+		oBillTotal: 0,
+		oUserID:    uID,
+	}
 }
 
 func PrintOrder() {
