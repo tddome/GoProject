@@ -40,29 +40,8 @@ type order struct {
 var orderList map[int]int
 
 //NewOrder - Makes new order, clears existing order
-func NewOrder(uID int) {
-	r := rand.New(rand.NewSource(1000))
-	var uniqueID int = 0
-	var count int = 0
-
+func NewOrder() {
 	orderList = make(map[int]int)
-
-	for uniqueID != 1 {
-		randID = r.Int()
-		for i, a := range orderHistory {
-			if a.oBillID == randID {
-				count++
-			} else if count == len(orderHistory) {
-				uniqueID = 1
-			}
-		}
-	}
-
-	oNew := order{
-		oBillID:    randID,
-		oBillTotal: 0,
-		oUserID:    uID,
-	}
 }
 
 func PrintOrder() {
@@ -81,4 +60,30 @@ func OrderRemoveProduct(prodID int, prodQ int) {
 
 func OrderQuantityUpdate(prodID int, newQ int) {
 	orderList[prodID] = newQ
+}
+
+func FinalizeOrder(uID int) {
+	var count int = 0
+	var randID int = 0
+	var bTotal int = 0
+
+	randID = rand.Intn(1000)
+	for count < len(orderHistory) {
+		if orderHistory[count].oBillID == randID {
+			randID = rand.Intn(1000)
+			count = 0
+		} else {
+			count++
+		}
+	}
+
+	// fucntion call here for generating bill total and setting bTotal value
+
+	oNew := order{
+		oBillID:    randID,
+		oBillTotal: bTotal,
+		oUserID:    uID,
+	}
+
+	AddOrderToDatabase(oNew)
 }
