@@ -1,3 +1,22 @@
+/* GoProject
+*
+* Class:
+*	CS 408
+*
+* Contributors:
+* 	Troy Dome
+* 	Shaylyn Wetts
+*
+* Last Updated:
+*	11/20/2016
+*
+* Function:
+*	Creates an order.  Creates a map of all inputted
+*	products and quantities, and stores the final bill ID,
+*	total price, and user ID who created the order in an
+*	order struct.  This struct is then stored in the database.
+ */
+
 package main
 
 import (
@@ -5,40 +24,18 @@ import (
 	"math/rand"
 )
 
-/*
-Order - Stores a user/manager Order
-
-Generates:
-Bill that can be accessed by User and Supplier
-Prints Bill information which contains:
-	Bill ID
-	Customer ID
-	Bank Account (Last 4 digits)
-	Products purchased with quantities for each
-	Applied discount(s)
-	Total Cost
-
-What comes from this class:
-	Map, with key being Product and value being Quantity
-		List of product IDs user wants in the order (can add/remove)
-		Number of products user wants for the item
-	Bill ID to identify this bill (Basically order number)
-	Bill Total to state total price (Can be modified by discount)
-
-What should come from other classes:
-	Customer ID
-	Bank Account
-	Applied Discounts (Discount class modifies total)
-*/
-
+// Order - stores ID, total price, and user ID
 type order struct {
 	oBillID    int
 	oBillTotal float32
 	oUserID    int
 }
 
+// Map of current ordered products and quantities
 var orderList map[int]int
 
+// GetIndexOfOrder - Check if an order is contained by ID
+// and returns the index where the ID is found, else return -1
 func GetIndexOfOrder(id int) int {
 	for i, a := range orderHistory {
 		if a.oBillID == id {
@@ -48,11 +45,13 @@ func GetIndexOfOrder(id int) int {
 	return -1
 }
 
-//NewOrder - Makes new order, clears existing order
+// NewOrder - Makes new order, clears existing order
 func NewOrder() {
 	orderList = make(map[int]int)
 }
 
+// PrintOrder - Prints all current products and quantities in
+// the order map
 func PrintOrder() {
 	for opID, oQuantity := range orderList {
 		fmt.Println("Product ID: ", opID, "; Quantity: ", oQuantity)
@@ -60,29 +59,41 @@ func PrintOrder() {
 	}
 }
 
+// OrderAddProduct - Adds a new product and quantity to the current
+// order map
 func OrderAddProduct(prodID int, prodQ int) {
 	orderList[prodID] = prodQ
 }
 
+// OrderRemoveProduct - Removes a product from the current order
+// map
 func OrderRemoveProduct(prodID int) {
 	delete(orderList, prodID)
 }
 
+// OrderQuantityUpdate - Updates the quantity of a product currently
+// in the map
 func OrderQuantityUpdate(prodID int, newQ int) {
 	orderList[prodID] = newQ
 }
 
+// CalculateOrder - Returns a value for the total of all current
+// products in the map
 func CalculateOrder() float32 {
 	var totalOfOrder = 0.0
-	//Calculate total amount that's in the map
+
 	for opID, oQuantity := range orderList {
 		fmt.Println("Product ID: ", opID, "Quantity: ", oQuantity)
-		totalOfOrder = float64(totalOfOrder) + float64(GetProductPrice(opID)*float32(oQuantity))
+		totalOfOrder = float64(totalOfOrder) +
+			float64(GetProductPrice(opID)*float32(oQuantity))
 	}
-	//Return a total amount
 	return float32(totalOfOrder)
 }
 
+// FinalizeOrder - Finalizes the current order; calls CalculateOrder
+// to get the total of the current products, applies discounts based
+// on inputted discount code, and generates an order object to be
+// stored in the database
 func FinalizeOrder(uID int, discountCode string) {
 	var count int = 0
 	var randID int = 0
@@ -98,7 +109,6 @@ func FinalizeOrder(uID int, discountCode string) {
 		}
 	}
 
-	// function call here for generating bill total and setting bTotal value
 	bTotal = bTotal - DiscountAmount(bTotal, discountCode)
 
 	oNew := order{
@@ -111,6 +121,7 @@ func FinalizeOrder(uID int, discountCode string) {
 	OrderToString(oNew.oBillID)
 }
 
+// OrderToString - Prints the finalized order information
 func OrderToString(id int) {
 	var count = 0
 	var i int

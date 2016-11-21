@@ -1,3 +1,22 @@
+/* GoProject
+*
+* Class:
+*	CS 408
+*
+* Contributors:
+* 	Troy Dome
+* 	Shaylyn Wetts
+*
+* Last Updated:
+*	11/20/2016
+*
+* Function:
+*	Creates a discount.  Provides functions for adding,
+*	removing, and printing discounts.  Also includes a
+*	function for calculating a total after a discount
+*	is applied.
+ */
+
 package main
 
 import (
@@ -10,6 +29,8 @@ type discount struct {
 	dPercent float32
 }
 
+// GetIndexOfDiscount - Check if a discount is contained by code
+// and returns the index where the code is found, else return -1
 func GetIndexOfDiscount(code string) int {
 	for i, a := range discountList {
 		if a.dCode == code {
@@ -19,6 +40,8 @@ func GetIndexOfDiscount(code string) int {
 	return -1
 }
 
+// CreateDiscount - Creates a discount and adds it to
+// the database
 func CreateDiscount(code string, p float32) {
 	dNew := discount{
 		dCode:    code,
@@ -27,29 +50,20 @@ func CreateDiscount(code string, p float32) {
 	AddDiscountToDatabase(dNew)
 }
 
+// DeleteDiscount - Deletes a current discount from the
+// database
 func DeleteDiscount(id string) {
 	var i int
 	i = GetIndexOfDiscount(id)
 	DeleteDiscountFromDatabase(i)
 }
 
-//DiscountSearch - Searches the database for index of discount
-//Uses the name of the discount, returns -1 if not indexed in database
-func DiscountSearch(discountCode string) int {
-	for i, dis := range discountList {
-		if dis.dCode == discountCode {
-			return i
-		}
-	}
-	return -1
-}
-
-//DiscountAmount - Applies amount being discounted from total
-//Returns the amount being discounted
-//(So you don't, say, discount the discounted price, which is wrong)
-//(Unless you want them to save even more money)
+//	DiscountAmount - Applies amount being discounted from total.
+//	Returns the amount being discounted.
+//	(So you don't, say, discount the discounted price, which is wrong)
+//	(Unless you want them to save even more money)
 func DiscountAmount(discountTotal float32, discountCode string) float32 {
-	var indexDiscount = DiscountSearch(discountCode)
+	var indexDiscount = GetIndexOfDiscount(discountCode)
 	if indexDiscount == -1 {
 		fmt.Println("Discount not in database; No discount applied.")
 		return 0
@@ -63,6 +77,7 @@ func DiscountAmount(discountTotal float32, discountCode string) float32 {
 	}
 }
 
+// DiscountToString - Prints a discount's code and amount
 func DiscountToString(id string) {
 	var i int
 	i = GetIndexOfDiscount(id)

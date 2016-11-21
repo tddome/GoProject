@@ -1,3 +1,23 @@
+/* GoProject
+*
+* Class:
+*	CS 408
+*
+* Contributors:
+* 	Troy Dome
+* 	Shaylyn Wetts
+*
+* Last Updated:
+*	11/20/2016
+*
+* Function:
+*	Creates a manager.  Includes functions used by the
+*	manager for adding products, removing products, adding
+*	discounts, removing discounts, and accessing all current
+*	products, discounts, and orders.  Includes prompts for
+*	user input to run these functions.
+ */
+
 package main
 
 import (
@@ -5,31 +25,37 @@ import (
 	"time"
 )
 
+// Manager - stores ID and password
 type manager struct {
 	mID string
 	mPW string
 }
 
+// CheckProductList - Outputs information on all current
+// products
 func CheckProductList() {
 	for _, prod := range productList {
 		ProductToString(prod.pID)
 	}
 }
 
+// CheckDiscountList - Outputs  information on all
+// current discounts
 func CheckDiscountList() {
-	fmt.Println("Manager requested for list of discount codes:\n")
 	for _, dis := range discountList {
 		DiscountToString(dis.dCode)
 	}
 }
 
+// CheckOrderList - Outputs information on all currently
+// stored orders
 func CheckOrderList() {
-	fmt.Println("Manager requested for list of past orders:\n")
 	for _, ord := range orderHistory {
 		OrderToString(ord.oBillID)
 	}
 }
 
+// ManagerAuthenticated - All functionality for a manager
 func ManagerAuthenticated() {
 	fmt.Println("\nWelcome, manager!\n")
 	var mAuth = 0

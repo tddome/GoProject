@@ -1,4 +1,22 @@
-// CS408_Go_Project project main.go
+/* GoProject
+*
+* Class:
+*	CS 408
+*
+* Contributors:
+* 	Troy Dome
+* 	Shaylyn Wetts
+*
+* Last Updated:
+*	11/20/2016
+*
+* Function:
+*	Creates a user and pay account. Includes functions for
+*	adding users, removing users, updating email and password,
+*	and accessing past orders by this user.  Includes prompts
+*	for user input to run these functions.
+ */
+
 package main
 
 import (
@@ -6,12 +24,16 @@ import (
 	"time"
 )
 
+// PayAccount - Contains bank name, account number, and
+// routing number for a user
 type payAccount struct {
 	bankName      string
 	accountNumber int
 	routingNumber int
 }
 
+// User - Contains ID, email, password, and bank account
+// information
 type user struct {
 	uID          int
 	uEmail       string
@@ -19,6 +41,8 @@ type user struct {
 	uBankAccount payAccount
 }
 
+// GetIndexOfUser - Check if a User is contained by ID
+// and returns the index where the ID is found, else return -1
 func GetIndexOfUser(id int) int {
 	for i, a := range userList {
 		if a.uID == id {
@@ -28,6 +52,8 @@ func GetIndexOfUser(id int) int {
 	return -1
 }
 
+// CreateUser - Creates a user with a unique ID and adds the user
+// to the database
 func CreateUser(id int, email string, pass string, bName string,
 	bAccNum int, bRoutNum int) {
 	var count int = 0
@@ -55,24 +81,28 @@ func CreateUser(id int, email string, pass string, bName string,
 	AddUserToDatabase(uNew)
 }
 
+// DeleteUser - Deletes a current user from the database
 func DeleteUser(id int) {
 	var i int
 	i = GetIndexOfUser(id)
 	DeleteUserFromDatabase(i)
 }
 
+// UserUpdateEmail - Updates the email of a user
 func UserUpdateEmail(id int, n string) {
 	var i int
 	i = GetIndexOfUser(id)
 	userList[i].uEmail = n
 }
 
+// UserUpdatePassword - Updates the password of a user
 func UserUpdatePassword(id int, n string) {
 	var i int
 	i = GetIndexOfUser(id)
 	userList[i].uPassword = n
 }
 
+// UserToString - Prints all information of a user
 func UserToString(id int) {
 	var i int
 	i = GetIndexOfUser(id)
@@ -86,6 +116,7 @@ func UserToString(id int) {
 	fmt.Println("\n")
 }
 
+// AccessPastOrders - Prints all orders made by a specific user
 func AccessPastOrders(id int) {
 	for _, ord := range orderHistory {
 		if ord.oUserID == id {
@@ -95,7 +126,7 @@ func AccessPastOrders(id int) {
 
 }
 
-// actually fill in stuff, especially for order
+// UserAuthenticated - All functionality for a user
 func UserAuthenticated(id int) {
 	var i int
 	var uAuth = 0

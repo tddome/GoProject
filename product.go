@@ -1,10 +1,26 @@
+/* GoProject
+*
+* Class:
+*	CS 408
+*
+* Contributors:
+* 	Troy Dome
+* 	Shaylyn Wetts
+*
+* Last Updated:
+*	11/20/2016
+*
+* Function:
+*	Product struct along with functions relating to product.
+ */
+
 package main
 
 import (
 	"fmt"
 )
 
-//Product - Stores Price, Name, Description
+// Product - Stores name, ID number, type, and price
 type product struct {
 	pName  string
 	pID    int
@@ -12,8 +28,8 @@ type product struct {
 	pPrice float32
 }
 
-//GetIndexOfProduct - Check if Product is contained by name
-//Return the index where name is found, else return -1
+// GetIndexOfProduct - Check if a product is contained by ID
+// and returns the index where the ID is found, else return -1
 func GetIndexOfProduct(id int) int {
 	for i, a := range productList {
 		if a.pID == id {
@@ -23,7 +39,8 @@ func GetIndexOfProduct(id int) int {
 	return -1
 }
 
-//ProductCreate - Create a Product to add to the Product List
+// ProductCreate - Create a product and add to database.  Checks to
+// make sure the ID of the product is unique
 func CreateProduct(name string, id int, atype string, price float32) {
 	var count int = 0
 
@@ -45,47 +62,42 @@ func CreateProduct(name string, id int, atype string, price float32) {
 	AddProductToDatabase(pNew)
 }
 
+// DeleteProduct - Delete a product from the database
 func DeleteProduct(id int) {
 	var i int
 	i = GetIndexOfProduct(id)
 	DeleteProductFromDatabase(i)
 }
 
-//ProductUpdateName - Update Name from a Product using index
+// ProductUpdateName - Update the name of a product
 func ProductUpdateName(id int, n string) {
 	var i int
 	i = GetIndexOfProduct(id)
 	productList[i].pName = n
 }
 
-//ProductUpdateID - Update ID from a Product using index
-func ProductUpdateID(id int, n int) {
-	var i int
-	i = GetIndexOfProduct(id)
-	productList[i].pID = n
-}
-
-//ProductUpdateType - Update Type from a Product using index
+// ProductUpdateType - Update the type of a product
 func ProductUpdateType(id int, n string) {
 	var i int
 	i = GetIndexOfProduct(id)
 	productList[i].pType = n
 }
 
-//ProductUpdatePrice - Update Price from a Product using index
+// ProductUpdatePrice - Update the price of a product
 func ProductUpdatePrice(id int, n float32) {
 	var i int
 	i = GetIndexOfProduct(id)
 	productList[i].pPrice = n
 }
 
+// GetProductPrice - Returns the price of a product
 func GetProductPrice(id int) float32 {
 	var i int
 	i = GetIndexOfProduct(id)
 	return productList[i].pPrice
 }
 
-//ProductToString - Prints information on Product
+// ProductToString - Prints information of a product
 func ProductToString(id int) {
 	var i int
 	i = GetIndexOfProduct(id)

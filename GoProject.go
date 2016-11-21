@@ -1,20 +1,22 @@
-// GoProject
-
-//Contributors:
-// Shaylyn Wetts
-// Troy Dome
-
-// References:
-// https://www.reddit.com/r/golang/comments/2uko6l/algorithms_and_data_structures_implemented_in_go/
-// https://www.goinggo.net/2013/09/iterating-over-slices-in-go.html
-// http://stackoverflow.com/questions/7782411/is-there-a-foreach-loop-in-go
-
-// Project Outline (Might only work for Troy?):
-// https://docs.google.com/document/d/1ocq3TYRU3JASzWDYsycaDi9CGuoG2MVsmT2LDAnvnaE/edit?ts=580ed160
+/* GoProject
+*
+* Class:
+*	CS 408
+*
+* Contributors:
+* 	Troy Dome
+* 	Shaylyn Wetts
+*
+* Last Updated:
+*	11/20/2016
+*
+* Function:
+*	Main method for testing and simulating the functionality
+*	of the project.  Includes comments on what to do and
+*	what the results will be for in class presentation demo.
+ */
 
 package main
-
-//	"fmt"
 
 func main() {
 	// create manager; show manager options
