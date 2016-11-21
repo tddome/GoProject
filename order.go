@@ -55,7 +55,8 @@ func NewOrder() {
 
 func PrintOrder() {
 	for opID, oQuantity := range orderList {
-		fmt.Println("Product ID: ", opID, "Quantity: ", oQuantity)
+		fmt.Println("Product ID: ", opID, "; Quantity: ", oQuantity)
+		fmt.Println("\n")
 	}
 }
 
@@ -63,7 +64,7 @@ func OrderAddProduct(prodID int, prodQ int) {
 	orderList[prodID] = prodQ
 }
 
-func OrderRemoveProduct(prodID int, prodQ int) {
+func OrderRemoveProduct(prodID int) {
 	delete(orderList, prodID)
 }
 
@@ -107,6 +108,7 @@ func FinalizeOrder(uID int, discountCode string) {
 	}
 
 	AddOrderToDatabase(oNew)
+	OrderToString(oNew.oBillID)
 }
 
 func OrderToString(id int) {
@@ -114,8 +116,9 @@ func OrderToString(id int) {
 	var i int
 	i = GetIndexOfOrder(id)
 
-	fmt.Println("Order #%v:", count)
-	fmt.Println("Bill ID: %v", orderHistory[i].oBillID)
-	fmt.Println("Bill Total: %v", orderHistory[i].oBillTotal)
-	fmt.Println("Created by User ID %v", orderHistory[i].oUserID)
+	fmt.Println("Order # ", count)
+	fmt.Println("Bill ID:                    ", orderHistory[i].oBillID)
+	fmt.Println("Bill Total:                ", orderHistory[i].oBillTotal)
+	fmt.Println("Created by User ID: ", orderHistory[i].oUserID)
+	fmt.Println("\n")
 }

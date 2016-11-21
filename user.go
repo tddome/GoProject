@@ -3,12 +3,13 @@ package main
 
 import (
 	"fmt"
+	"time"
 )
 
 type payAccount struct {
 	bankName      string
-	accountNumber float64
-	routingNumber float64
+	accountNumber int
+	routingNumber int
 }
 
 type user struct {
@@ -28,7 +29,7 @@ func GetIndexOfUser(id int) int {
 }
 
 func CreateUser(id int, email string, pass string, bName string,
-	bAccNum float64, bRoutNum float64) {
+	bAccNum int, bRoutNum int) {
 	var count int = 0
 
 	for count < len(userList) {
@@ -82,6 +83,7 @@ func UserToString(id int) {
 	fmt.Println("User Bank Name: ", userList[i].uBankAccount.bankName)
 	fmt.Println("User Account #:  ", userList[i].uBankAccount.accountNumber)
 	fmt.Println("User Routing #:  ", userList[i].uBankAccount.routingNumber)
+	fmt.Println("\n")
 }
 
 func AccessPastOrders(id int) {
@@ -94,7 +96,7 @@ func AccessPastOrders(id int) {
 }
 
 // actually fill in stuff, especially for order
-func userAuthenticated(id int) {
+func UserAuthenticated(id int) {
 	var i int
 	var uAuth = 0
 	i = GetIndexOfUser(id)
@@ -104,64 +106,113 @@ func userAuthenticated(id int) {
 			fmt.Println("Not a valid user ID.")
 			uAuth = 1
 		} else {
-			fmt.Println("\nWelcome, user! What do you want to do?")
+			fmt.Println("Welcome, user!\n")
+			fmt.Println("What do you want to do?")
 			fmt.Println("1. View user information")
 			fmt.Println("2. Update email")
 			fmt.Println("3. Update password")
 			fmt.Println("4. Place order")
 			fmt.Println("5. Access previous orders")
 			fmt.Println("6. Delete account")
-			fmt.Println("7. Sign out")
+			fmt.Println("7. Sign out\n")
 			var text string
+			fmt.Printf("-> ")
 			fmt.Scan(&text)
 
 			switch text {
 			case "1":
-				fmt.Println("Your user information:\n")
+				fmt.Println("\nYour user information:\n")
 				UserToString(id)
 			case "2":
-				fmt.Println("Enter new email address: testEmail@test.email")
+				fmt.Println("\nEnter new email address: testEmail@test.email")
+				fmt.Println("Updating email...\n")
+				time.Sleep(2 * time.Second)
 				UserUpdateEmail(id, "testEmail@test.email")
 				fmt.Println("Email updated.\n")
 			case "3":
-				fmt.Println("Enter new password: badPassword")
+				fmt.Println("\nEnter new password: badPassword")
+				fmt.Println("Updating password...\n")
+				time.Sleep(2 * time.Second)
 				UserUpdatePassword(id, "badPassword")
 				fmt.Println("Password updated.\n")
 			case "4":
-				fmt.Println("Starting order...\n")
+				fmt.Println("\nStarting order...\n")
 				NewOrder()
-				fmt.Println("Adding product:\n")
-				fmt.Println("Product ID: ")
-				fmt.Println("Quantity: ")
-				OrderAddProduct(1, 1)
-				fmt.Println("Adding product:\n")
-				fmt.Println("Product ID: ")
-				fmt.Println("Quantity: ")
-				OrderAddProduct(1, 1)
-				fmt.Println("Remove product:\n")
-				OrderRemoveProduct(1, 1)
-				fmt.Println("Update quantity:\n")
-				fmt.Println("Product:")
-				OrderQuantityUpdate(1, 1)
-				fmt.Println("Current order:\n")
-				PrintOrder()
-				fmt.Println("Finalizing order\n")
-				fmt.Println("Discount code: code")
-				FinalizeOrder(id, "discountcode")
-				fmt.Println("Order complete.")
+				fmt.Println("Current products offered:\n")
+				CheckProductList()
+				var fOrd int = 0
+
+				for fOrd < 1 {
+					fmt.Println("What do you want to do?")
+					fmt.Println("1. Add product")
+					fmt.Println("2. Remove product")
+					fmt.Println("3. Update quantity")
+					fmt.Println("4. View current order")
+					fmt.Println("5. Finish order")
+					fmt.Println("6. Cancel order\n")
+					var text2 string
+					fmt.Printf("-> ")
+					fmt.Scan(&text2)
+
+					switch text2 {
+					case "1":
+						fmt.Println("\nProduct ID: 99")
+						fmt.Println("Quantity: 1")
+						fmt.Println("Adding product...\n")
+						time.Sleep(2 * time.Second)
+						OrderAddProduct(99, 1)
+						fmt.Println("Product added.\n")
+
+						// Extra products for the sake of demo
+						OrderAddProduct(203, 7)
+					case "2":
+						fmt.Println("\nProduct ID: 99")
+						fmt.Println("Removing product...\n")
+						time.Sleep(2 * time.Second)
+						OrderRemoveProduct(99)
+						fmt.Println("Product removed.\n")
+					case "3":
+						fmt.Println("\nProduct ID: 203")
+						fmt.Println("New quantity: 2")
+						fmt.Println("Updating...\n")
+						time.Sleep(2 * time.Second)
+						OrderQuantityUpdate(203, 2)
+						fmt.Println("Quantity updated.\n")
+					case "4":
+						fmt.Println("\nAccessing order...\n")
+						time.Sleep(2 * time.Second)
+						fmt.Println("Your current order:\n")
+						PrintOrder()
+					case "5":
+						fmt.Println("\nDiscount code: SWEET30")
+						fmt.Println("Finalizing order...\n")
+						time.Sleep(2 * time.Second)
+						FinalizeOrder(id, "SWEET30")
+						fmt.Println("Order complete.")
+						fOrd = 1
+					case "6":
+						fmt.Println("\nOrder cancelled.\n")
+						fOrd = 1
+					default:
+						fmt.Println("\nIncorrect input. Please try again.")
+					}
+				}
 			case "5":
+				fmt.Println("\nAccessing orders...\n")
+				time.Sleep(2 * time.Second)
 				fmt.Println("Your previous orders:\n")
 				AccessPastOrders(id)
 			case "6":
-				fmt.Println("Deleting your account...")
+				fmt.Println("\nDeleting your account...\n")
+				time.Sleep(2 * time.Second)
 				DeleteUser(id)
 				fmt.Println("Account deleted.  Goodbye!\n")
 				uAuth = 1
 			case "7":
-				fmt.Println("Signing out...\n")
+				fmt.Println("\nSigning out...\n")
 				uAuth = 1
 			default:
-				fmt.Println("Incorrect input. Please try again.")
+				fmt.Println("\nIncorrect input. Please try again.")
 			}
 		}
 	}
