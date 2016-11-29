@@ -8,7 +8,7 @@
 * 	Shaylyn Wetts
 *
 * Last Updated:
-*	11/20/2016
+*	11/28/2016
 *
 * Function:
 *	Creates a manager.  Includes functions used by the
@@ -22,7 +22,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 // Manager - stores ID and password
@@ -76,56 +75,57 @@ func ManagerAuthenticated() {
 
 		switch text {
 		case "1":
-			fmt.Println("\nEnter Name: Bear")
-			fmt.Println("Enter ID: 99")
-			fmt.Println("Enter Type: Animal")
-			fmt.Println("Enter Price: 1000000")
-			fmt.Println("\nCreating product...")
-			time.Sleep(2 * time.Second)
-			CreateProduct("BEAR", 99, "ANIMAL", 1000000)
-			fmt.Println("Product created.\n")
+			var inName string
+			var inId int
+			var inType string
+			var inPrice float32
 
-			// Extra products for the sake of the demo
-			CreateProduct("PAINT BRUSH", 406, "ART SUPPLIES", 15)
-			CreateProduct("PHILLY CHEESE STEAK", 101, "FOOD", 7)
-			CreateProduct("SANDALS", 51, "CLOTHING", 20)
-			CreateProduct("DOG TOY DELUXE", 203, "TOY", 30)
-			CreateProduct("CLASSIC TANK TOP", 309, "CLOTHING", 90)
+			fmt.Printf("\nEnter Name: ")
+			fmt.Scan(&inName)
+			fmt.Printf("Enter ID: ")
+			fmt.Scan(&inId)
+			fmt.Printf("Enter Type: ")
+			fmt.Scan(&inType)
+			fmt.Printf("Enter Price: ")
+			fmt.Scan(&inPrice)
+			fmt.Println("\nCreating product...")
+			CreateProduct(inName, inId, inType, inPrice)
+			fmt.Println("Product created.\n")
 		case "2":
-			fmt.Println("\nEnter Product ID: 51")
+			var inId int
+
+			fmt.Printf("\nEnter Product ID: ")
+			fmt.Scan(&inId)
 			fmt.Println("Removing product...\n")
-			time.Sleep(2 * time.Second)
-			DeleteProduct(51)
+			DeleteProduct(inId)
 			fmt.Println("Product removed.\n")
 		case "3":
 			fmt.Println("\nPlease wait...\n")
-			time.Sleep(2 * time.Second)
 			CheckProductList()
 		case "4":
-			fmt.Println("\nEnter Code: SAVE20")
-			fmt.Println("Enter discount amount(%): 20")
-			time.Sleep(2 * time.Second)
-			CreateDiscount("SAVE20", 20)
+			var inCode string
+			var inPercent float32
+
+			fmt.Printf("\nEnter Code: ")
+			fmt.Scan(&inCode)
+			fmt.Printf("Enter discount amount(%): ")
+			fmt.Scan(&inPercent)
+			CreateDiscount(inCode, inPercent)
 			fmt.Println("Discount created.\n")
 
-			// Extra discounts for the sake of the demo
-			CreateDiscount("WOWMAN", 70)
-			CreateDiscount("BEARSPECIAL", 40)
-			CreateDiscount("SWEET30", 30)
-			CreateDiscount("CHRISTMASJOY", 50)
 		case "5":
-			fmt.Println("\nEnter Discount Code: CHRISTMASJOY")
+			var inCode string
+
+			fmt.Printf("\nEnter Discount Code: ")
+			fmt.Scan(&inCode)
 			fmt.Println("Removing discount...")
-			time.Sleep(2 * time.Second)
-			DeleteDiscount("CHRISTMASJOY")
+			DeleteDiscount(inCode)
 			fmt.Println("\nDiscount removed.\n")
 		case "6":
 			fmt.Println("\nPlease wait...\n")
-			time.Sleep(2 * time.Second)
 			CheckDiscountList()
 		case "7":
 			fmt.Println("\nPlease wait...\n")
-			time.Sleep(2 * time.Second)
 			CheckOrderList()
 		case "8":
 			fmt.Println("\nSigning out...\n")

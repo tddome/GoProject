@@ -8,7 +8,7 @@
 * 	Shaylyn Wetts
 *
 * Last Updated:
-*	11/20/2016
+*	11/28/2016
 *
 * Function:
 *	Creates a user and pay account. Includes functions for
@@ -21,7 +21,6 @@ package main
 
 import (
 	"fmt"
-	"time"
 )
 
 // PayAccount - Contains bank name, account number, and
@@ -155,16 +154,20 @@ func UserAuthenticated(id int) {
 				fmt.Println("\nYour user information:\n")
 				UserToString(id)
 			case "2":
-				fmt.Println("\nEnter new email address: testEmail@test.email")
+				var inEmail string
+
+				fmt.Printf("\nEnter new email address: ")
+				fmt.Scan(&inEmail)
 				fmt.Println("Updating email...\n")
-				time.Sleep(2 * time.Second)
-				UserUpdateEmail(id, "testEmail@test.email")
+				UserUpdateEmail(id, inEmail)
 				fmt.Println("Email updated.\n")
 			case "3":
-				fmt.Println("\nEnter new password: badPassword")
+				var inPass string
+
+				fmt.Printf("\nEnter new password: ")
+				fmt.Scan(&inPass)
 				fmt.Println("Updating password...\n")
-				time.Sleep(2 * time.Second)
-				UserUpdatePassword(id, "badPassword")
+				UserUpdatePassword(id, inPass)
 				fmt.Println("Password updated.\n")
 			case "4":
 				fmt.Println("\nStarting order...\n")
@@ -187,38 +190,46 @@ func UserAuthenticated(id int) {
 
 					switch text2 {
 					case "1":
-						fmt.Println("\nProduct ID: 99")
-						fmt.Println("Quantity: 1")
-						fmt.Println("Adding product...\n")
-						time.Sleep(2 * time.Second)
-						OrderAddProduct(99, 1)
-						fmt.Println("Product added.\n")
+						var inId int
+						var inQuant int
 
-						// Extra products for the sake of demo
-						OrderAddProduct(203, 7)
+						fmt.Printf("\nProduct ID: ")
+						fmt.Scan(&inId)
+						fmt.Printf("Quantity: ")
+						fmt.Scan(&inQuant)
+						fmt.Println("Adding product...\n")
+						OrderAddProduct(inId, inQuant)
+						fmt.Println("Product added.\n")
 					case "2":
-						fmt.Println("\nProduct ID: 99")
+						var inId int
+
+						fmt.Printf("\nProduct ID: ")
+						fmt.Scan(&inId)
 						fmt.Println("Removing product...\n")
-						time.Sleep(2 * time.Second)
-						OrderRemoveProduct(99)
+						OrderRemoveProduct(inId)
 						fmt.Println("Product removed.\n")
 					case "3":
-						fmt.Println("\nProduct ID: 203")
-						fmt.Println("New quantity: 2")
-						fmt.Println("Updating...\n")
-						time.Sleep(2 * time.Second)
-						OrderQuantityUpdate(203, 2)
+						var inId int
+						var inQuant int
+
+						fmt.Printf("\nProduct ID: ")
+						fmt.Scan(&inId)
+						fmt.Printf("New quantity: ")
+						fmt.Scan(&inQuant)
+						fmt.Printf("Updating...\n")
+						OrderQuantityUpdate(inId, inQuant)
 						fmt.Println("Quantity updated.\n")
 					case "4":
 						fmt.Println("\nAccessing order...\n")
-						time.Sleep(2 * time.Second)
 						fmt.Println("Your current order:\n")
 						PrintOrder()
 					case "5":
-						fmt.Println("\nDiscount code: SWEET30")
+						var inCode string
+
+						fmt.Printf("\nDiscount code: ")
+						fmt.Scan(&inCode)
 						fmt.Println("Finalizing order...\n")
-						time.Sleep(2 * time.Second)
-						FinalizeOrder(id, "SWEET30")
+						FinalizeOrder(id, inCode)
 						fmt.Println("Order complete.")
 						fOrd = 1
 					case "6":
@@ -230,12 +241,10 @@ func UserAuthenticated(id int) {
 				}
 			case "5":
 				fmt.Println("\nAccessing orders...\n")
-				time.Sleep(2 * time.Second)
 				fmt.Println("Your previous orders:\n")
 				AccessPastOrders(id)
 			case "6":
 				fmt.Println("\nDeleting your account...\n")
-				time.Sleep(2 * time.Second)
 				DeleteUser(id)
 				fmt.Println("Account deleted.  Goodbye!\n")
 				uAuth = 1

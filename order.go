@@ -8,7 +8,7 @@
 * 	Shaylyn Wetts
 *
 * Last Updated:
-*	11/20/2016
+*	11/28/2016
 *
 * Function:
 *	Creates an order.  Creates a map of all inputted
@@ -123,11 +123,9 @@ func FinalizeOrder(uID int, discountCode string) {
 
 // OrderToString - Prints the finalized order information
 func OrderToString(id int) {
-	var count = 0
 	var i int
 	i = GetIndexOfOrder(id)
 
-	fmt.Println("Order # ", count)
 	fmt.Println("Bill ID:                    ", orderHistory[i].oBillID)
 	fmt.Println("Bill Total:                ", orderHistory[i].oBillTotal)
 	fmt.Println("Created by User ID: ", orderHistory[i].oUserID)
