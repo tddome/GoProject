@@ -17,8 +17,14 @@ It will allow a customer to register, so they can purchase an item. They can the
 4. Download the archive for LiteIDE. This can be done at: [LiteIDE Download](https://sourceforge.net/projects/liteide/files/).   
 
 > Extracting the archive:
-> Windows -> Extract it into c:\
-> Mac/Linux -> Extract it into /usr/local or $HOME   
+
+Windows:   
+
+> Extract it into c:\
+
+Mac/Linux:   
+
+> Extract it into /usr/local or $HOME   
 
 5. Once LiteIDE is extracted, open LiteIDE. If it asks for the ROOT directory of Go, select the directory you chose when installing it in Step 2.   
 6.Inside LiteIDE, go to File -> Open Folder.   
