@@ -11,7 +11,7 @@ It will allow a customer to register, so they can purchase an item. They can the
 
 ## How to Install   
 1. Download and install Go. This can be done at the following link: [Golang Download](https://golang.org/dl/)   
-> Be sure to select the appropiate download for your system.
+> Be sure to select the appropiate download for your system.   
 2. Follow the steps in the executable to complete the installation. The default installation should point to C:\, which will become your ROOT folder location for Go.   
 3. Download and install LiteIDE. This can be done at: [LiteIDE Download](https://sourceforge.net/projects/liteide/files/latest/download?source=files)   
 4. Follow the steps in the executable to complete the installation. It should ask to set the ROOT directory, which can be obtained from Step 2.   
