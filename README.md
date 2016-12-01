@@ -10,12 +10,16 @@ This project was created to highlight the development of Go into a high-level pr
    
 ## Description   
 
-It will allow a customer to register, so they can purchase an item. They can then provide their bank account number and bank name (multiple account numbers allowed). They'd also have a unique customer id, user id, and password registered to themselves. They can then purchase items and in different quantities. Discounts can be applied on items. A bill will be generated, and will provide after-information for suppliers to send the items in.   
+The program will allow a customer (you, the user) to register, so you can purchase an item. The user can then provide their bank account number and bank name (multiple account numbers allowed). The user also get a unique customer id, user id, and password registered to yourself. The user is then allowed to purchase items and in different quantities. Discounts can be applied on items. A bill will be generated, and will provide after-information for the purchase.   
+   
+Additional features are included, such as manager features for adding or deleting items, the ability to delete your account, and more.   
+   
+This is a small prototype we created for our CS 408 - Programming Languages class. We may expand on this project in the future.
 
 ## How to Install Go and LiteIDE   
 
 1. Download our repository, and extract wherever you'd like.   
-  * [GoProject download](https://github.com/tddome/GoProject/archive/master.zip)   
+  * [GoProject Repository Download](https://github.com/tddome/GoProject/archive/master.zip)   
 2. Download and run the installation file for Go.
   * [Golang Download - Windows](https://storage.googleapis.com/golang/go1.7.3.windows-amd64.msi)    
   * [Golang Download - Mac](https://storage.googleapis.com/golang/go1.7.3.darwin-amd64.pkg)    
@@ -24,7 +28,7 @@ It will allow a customer to register, so they can purchase an item. They can the
 4. Download the archive for LiteIDE.   
   * [LiteIDE Archive Download](https://sourceforge.net/projects/liteide/files/)   
 
-## Extracting the LiteIDE archive:
+## Extracting the LiteIDE Archive
 
 Windows:   
 
