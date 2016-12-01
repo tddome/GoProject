@@ -14,7 +14,7 @@ The program will allow a customer (you, the user) to register, so you can purcha
    
 Additional features are included, such as manager features for adding or deleting items, the ability to delete your account, and more.   
    
-This is a small prototype we created for our CS 408 - Programming Languages class. We may expand on this project in the future.
+This is a small prototype we created for our CS 408 - Programming Languages class. We may expand on this project in the future. If you have any questions, you can contact at any time on Github (tddome).
 
 ## How to Install Go and LiteIDE   
 
