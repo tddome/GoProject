@@ -3,13 +3,13 @@ Contributors:
 Shaylyn Wetts   
 Troy Dome   
 
-# Purpose   
+## Purpose   
 This project was created to highlight the development of Go into a high-level programming language. Our goal was to create a program that simulates a retail database. Through this program, we demonstrate some of the important aspects of Go mentioned in our presentation, inlcuding use of functions (funcs) and objects (structs), along with displaying how the data structure, Slices, can be used in Go.   
    
-# Description   
+## Description   
 It will allow a customer to register, so they can purchase an item. They can then provide their bank account number and bank name (multiple account numbers allowed). They'd also have a unique customer id, user id, and password registered to themselves. They can then purchase items and in different quantities. Discounts can be applied on items. A bill will be generated, and will provide after-information for suppliers to send the items in.   
 
-# How to Install   
+## How to Install   
 1. Download and install Go. This can be done at the following link (and be sure to select the appropriate download for your system):
 https://golang.org/dl/   
 2. Follow the steps in the executable to complete the installation. The default installation should point to C:\, which will become your ROOT folder location for Go.   
