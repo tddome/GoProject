@@ -10,11 +10,13 @@ This project was created to highlight the development of Go into a high-level pr
 It will allow a customer to register, so they can purchase an item. They can then provide their bank account number and bank name (multiple account numbers allowed). They'd also have a unique customer id, user id, and password registered to themselves. They can then purchase items and in different quantities. Discounts can be applied on items. A bill will be generated, and will provide after-information for suppliers to send the items in.   
 
 ## How to Install Go and LiteIDE   
-1. Download our repository [here, and extract whenever you'd like.](https://github.com/tddome/GoProject/archive/master.zip)   
-2. Download and run the installation file for Go. [Golang Download](https://golang.org/dl/)   
+1. Download our repository [here, and extract wherever you'd like.](https://github.com/tddome/GoProject/archive/master.zip)   
+2. Download and run the installation file for Go.
+  * [Golang Download](https://golang.org/dl/)   
   * Be sure to select the appropiate download for your system.   
 3. Select all default settings during the Go installation.       
-4. Download the archive for LiteIDE. [LiteIDE Download](https://sourceforge.net/projects/liteide/files/)   
+4. Download the archive for LiteIDE.   
+  * [LiteIDE Archive Download](https://sourceforge.net/projects/liteide/files/)   
 
 > Extracting the LiteIDE archive:
 
